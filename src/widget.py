@@ -19,5 +19,7 @@ def mask_account_card(card: str) -> Optional[str]:
         return f"{info} {get_mask_account(number)}"
     return None
 
-
-print(mask_account_card("Счет 35383033474447895560"))
+def get_date(date: str) -> str:
+    year_month_day = date[:10]
+    date_list = year_month_day.split('-')
+    return '.'.join(date_list[::-1])
