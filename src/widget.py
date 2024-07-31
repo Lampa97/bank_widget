@@ -19,7 +19,10 @@ def mask_account_card(card: str) -> Optional[str]:
         return f"{info} {get_mask_account(number)}"
     return None
 
+
 def get_date(date: str) -> str:
+    """Функция принимает строку с датой в формате '2024-03-11T02:26:18.671407'
+    и возвращает отформатированную строку с датой в формате 'ДД.ММ.ГГГГ'"""
     year_month_day = date[:10]
-    date_list = year_month_day.split('-')
-    return '.'.join(date_list[::-1])
+    date_list = year_month_day.split("-")
+    return ".".join(date_list[::-1])
