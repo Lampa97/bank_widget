@@ -32,14 +32,8 @@ def test_card_number_generator():
     assert next(generator) == "0000 0000 1234 5006"
     assert next(generator) == "0000 0000 1234 5007"
 
-@pytest.mark.parametrize(
-    "start, stop",
-    [
-        (-5, 2),
-        (6, 4),
-        (1, 10000000000000001)
-    ]
-)
+
+@pytest.mark.parametrize("start, stop", [(-5, 2), (6, 4), (1, 10000000000000001)])
 def test_card_number_generator_invalid(start, stop):
     with pytest.raises(ValueError):
         assert next(card_number_generator(start, stop))
