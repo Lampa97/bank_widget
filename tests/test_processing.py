@@ -40,5 +40,5 @@ def test_filter_by_date_descending(processing_data_valid):
 
 
 def test_filter_by_date_missing(processing_data_invalid):
-    with pytest.raises(TypeError):
+    with pytest.raises(KeyError):
         assert sort_by_date(processing_data_invalid)
