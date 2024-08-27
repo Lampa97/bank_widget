@@ -10,6 +10,7 @@ headers = {"apikey": API_TOKEN}
 
 
 def convert_into_rub(transaction: dict) -> float | bool:
+    """Функция конвертирует валюту в рубли по запросу к API"""
     try:
         currency = transaction["operationAmount"]["currency"]["code"]
         amount = transaction["operationAmount"]["amount"]
