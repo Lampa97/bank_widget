@@ -9,9 +9,12 @@ API_TOKEN = os.getenv("API_KEY")
 headers = {"apikey": API_TOKEN}
 
 
-def transaction_into_rub(transaction: dict) -> float:
-    currency = transaction["operationAmount"]["currency"]["code"]
-    amount = transaction["operationAmount"]["amount"]
+def convert_into_rub(transaction: dict) -> float | bool:
+    try:
+        currency = transaction["operationAmount"]["currency"]["code"]
+        amount = transaction["operationAmount"]["amount"]
+    except KeyError:
+        return False
     if currency == "RUB":
         return float(amount)
     elif currency == "USD" or currency == "EUR":
@@ -20,6 +23,4 @@ def transaction_into_rub(transaction: dict) -> float:
         if response.status_code == 200:
             result = response.json()
             return float(round(result["result"], 2))
-        else:
-            print('Конвертация не удалась')
     return False
