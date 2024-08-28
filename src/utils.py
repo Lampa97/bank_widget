@@ -8,7 +8,7 @@ file_handler = logging.FileHandler("../logs/utils.log", "w", encoding="utf-8")
 file_formatter = logging.Formatter("%(asctime)s - %(filename)s - %(levelname)s - %(message)s")
 file_handler.setFormatter(file_formatter)
 logger.addHandler(file_handler)
-logger.setLevel(logging.INFO)
+logger.setLevel(logging.DEBUG)
 
 
 def get_transaction_data(path: str) -> List[dict]:
