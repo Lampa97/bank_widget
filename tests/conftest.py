@@ -127,3 +127,80 @@ def rub_transactions():
             "to": "Счет 14211924144426031657",
         },
     ]
+
+
+@pytest.fixture
+def one_usd_transaction():
+    return {
+        "id": 895315941,
+        "state": "EXECUTED",
+        "date": "2018-08-19T04:27:37.904916",
+        "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+        "description": "Перевод с карты на карту",
+        "from": "Visa Classic 6831982476737658",
+        "to": "Visa Platinum 8990922113665229",
+    }
+
+
+@pytest.fixture
+def one_rub_transaction():
+    return {
+        "id": 587085106,
+        "state": "EXECUTED",
+        "date": "2018-03-23T10:45:06.972075",
+        "operationAmount": {"amount": "48223.05", "currency": {"name": "руб.", "code": "RUB"}},
+        "description": "Открытие вклада",
+        "to": "Счет 41421565395219882431",
+    }
+
+
+@pytest.fixture
+def one_gbp_transaction():
+    return {
+        "id": 587085106,
+        "state": "EXECUTED",
+        "date": "2018-03-23T10:45:06.972075",
+        "operationAmount": {"amount": "48223.05", "currency": {"name": "GBP", "code": "GBP"}},
+        "description": "Открытие вклада",
+        "to": "Счет 41421565395219882431",
+    }
+
+
+@pytest.fixture
+def result():
+    return {
+        "success": True,
+        "query": {"from": "USD", "to": "RUB", "amount": 79114.93},
+        "info": {"timestamp": 1724759224, "rate": 91.101229},
+        "date": "2024-08-27",
+        "result": 200.00,
+    }
+
+
+@pytest.fixture
+def test_json_data():
+    return [
+        {
+            "id": 441945886,
+            "state": "EXECUTED",
+            "date": "2019-08-26T10:50:58.294041",
+            "operationAmount": {"amount": "31957.58", "currency": {"name": "руб.", "code": "RUB"}},
+            "description": "Перевод организации",
+            "from": "Maestro 1596837868705199",
+            "to": "Счет 64686473678894779589",
+        },
+        {
+            "id": 41428829,
+            "state": "EXECUTED",
+            "date": "2019-07-03T18:35:29.512364",
+            "operationAmount": {"amount": "8221.37", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод организации",
+            "from": "MasterCard 7158300734726758",
+            "to": "Счет 35383033474447895560",
+        },
+    ]
+
+
+@pytest.fixture
+def path_to_file():
+    return "../tests/test_operations.json"
