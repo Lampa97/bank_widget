@@ -178,7 +178,7 @@ def result():
 
 
 @pytest.fixture
-def json_data():
+def test_json_data():
     return [
         {
             "id": 441945886,
@@ -199,3 +199,8 @@ def json_data():
             "to": "Счет 35383033474447895560",
         },
     ]
+
+
+@pytest.fixture
+def path_to_file():
+    return "../tests/test_operations.json"
