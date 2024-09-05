@@ -16,6 +16,3 @@ def read_excel_file(path: str) -> List[dict]:
     my_path = os.path.join(os.path.dirname(__file__), path)
     info = pd.read_excel(my_path)
     return info.to_dict(orient="records")
-
-
-print(read_excel_file("../data/transactions_excel.xlsx"))
