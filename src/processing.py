@@ -15,10 +15,13 @@ def sort_by_date(transactions: List[dict], ascending: bool = True) -> List[dict]
     По умолчанию - убывание."""
     return sorted(transactions, key=lambda x: x["date"], reverse=ascending)
 
+
 def get_transactions_by_description(transactions: List[dict], search_string: str) -> List[dict]:
     """Функция принимает список транзакций и возвращает транзакции
     соответствующие строке поиска по описанию транзакции"""
-    pattern = fr'{search_string}'
-    return [trans for trans in transactions if re.search(pattern, trans['description'], flags=re.IGNORECASE)]
+    pattern = rf"{search_string}"
+    return [trans for trans in transactions if re.search(pattern, trans["description"], flags=re.IGNORECASE)]
 
-def count_operation_categories(transactions)
+
+def count_operation_categories(transactions: List[dict], categories_list: list) -> dict:
+    return Counter([x["description"] for x in transactions if x["description"] in categories_list])
