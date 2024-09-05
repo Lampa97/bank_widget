@@ -24,4 +24,4 @@ def get_transactions_by_description(transactions: List[dict], search_string: str
 
 
 def count_operation_categories(transactions: List[dict], categories_list: list) -> dict:
-    return Counter([x["description"] for x in transactions if x["description"] in categories_list])
+    return dict(Counter([x["description"] for x in transactions if x["description"] in categories_list]))
