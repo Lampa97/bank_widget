@@ -5,7 +5,7 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(account_card: str) -> Optional[str]:
     """Функция принимает имя и номер карты/счета в виде строки и возвращает замаскированный номер"""
-    split_info = account_card.split()  # разделяем имя и номер
+    split_info = str(account_card).split()  # разделяем имя и номер
     number = ""
     for item in split_info:
         if item.isdigit():
