@@ -8,6 +8,7 @@ from src.widget import get_date, mask_account_card
 
 
 def file_choice() -> List[dict]:
+    """Функция предоставляет пользователю выбор файла из которого будет считываться информация о транзакциях"""
     while True:
         user_choice = input(
             """Выберите необходимый пункт меню:
@@ -31,6 +32,7 @@ def file_choice() -> List[dict]:
 
 
 def choose_status(transactions: List[dict]) -> List[dict]:
+    """Функция предоставляет пользователю выбор статуса по которому будут фильтроваться транзакции"""
     user_choice = input(
         """
     Введите статус, по которому необходимо выполнить фильтрацию.
@@ -48,6 +50,7 @@ def choose_status(transactions: List[dict]) -> List[dict]:
 
 
 def choose_operations(transactions: List[dict]) -> List[dict]:
+    """Функция предоставляет пользователю инструменты сортировки и фильтрации транзакций"""
     choose_date_sort = input("Отсортировать операции по дате? Да/Нет\n")
     if choose_date_sort.lower() == "да":
         sort_order_choice = input("Отсортировать по возрастанию или по убыванию?\n")
@@ -78,6 +81,7 @@ def choose_operations(transactions: List[dict]) -> List[dict]:
 
 
 def print_transactions(transactions: List[dict]) -> None:
+    """Функция выводит в консоль итоговый список транзакций"""
     print("Распечатываю итоговый список транзакций...\n")
     if len(transactions) > 0:
         print(f"Всего банковских операций в выборке: {len(transactions)}\n")
