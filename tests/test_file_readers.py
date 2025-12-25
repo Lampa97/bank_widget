@@ -1,7 +1,5 @@
 from unittest.mock import patch
 
-import pandas
-
 from src.file_readers import read_csv_file, read_excel_file
 
 

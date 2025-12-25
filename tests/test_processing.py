@@ -1,6 +1,6 @@
 import pytest
 
-from src.processing import filter_by_state, sort_by_date
+from src.processing import count_operation_categories, filter_by_state, get_transactions_by_description, sort_by_date
 
 
 def test_filter_by_state_executed(processing_data_valid):
@@ -42,3 +42,32 @@ def test_filter_by_date_descending(processing_data_valid):
 def test_filter_by_date_missing(processing_data_invalid):
     with pytest.raises(KeyError):
         assert sort_by_date(processing_data_invalid)
+
+
+def test_get_transactions_by_description_not_found(transactions):
+    assert get_transactions_by_description(transactions, "Учеба") == []
+
+
+def test_get_transactions_by_description_success(transactions):
+    assert get_transactions_by_description(transactions, "карт") == [
+        {
+            "id": 895315941,
+            "state": "EXECUTED",
+            "date": "2018-08-19T04:27:37.904916",
+            "operationAmount": {"amount": "56883.54", "currency": {"name": "USD", "code": "USD"}},
+            "description": "Перевод с карты на карту",
+            "from": "Visa Classic 6831982476737658",
+            "to": "Visa Platinum 8990922113665229",
+        }
+    ]
+
+
+def test_count_operation_categories_not_found(transactions):
+    assert count_operation_categories(transactions, ["Оплата учебы", "Выплата кредита"]) == {}
+
+
+def test_count_operation_categories_found(transactions):
+    assert count_operation_categories(transactions, ["Перевод организации", "Перевод со счета на счет"]) == {
+        "Перевод организации": 2,
+        "Перевод со счета на счет": 2,
+    }

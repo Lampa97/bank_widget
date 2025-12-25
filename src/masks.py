@@ -11,11 +11,13 @@ logger.setLevel(logging.DEBUG)
 
 def get_mask_card_number(card_number: str) -> Optional[str]:
     """Функция возвращает замаскированный номер банковской карты в формате 'XXXX XX** **** XXXX'"""
+    card_number = str(card_number)
     logger.info(f"Маскируем номер карты {card_number}")
     return f"{card_number[:4]} {card_number[4:6]}** **** {card_number[-4:]}"
 
 
 def get_mask_account(account_number: str) -> Optional[str]:
     """Функция возвращает замаскированный номер банковского счета в формате '**XXXX'"""
+    account_number = str(account_number)
     logger.info(f"Маскируем номер счета {account_number}")
     return f"**{account_number[-4:]}"

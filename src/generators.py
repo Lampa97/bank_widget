@@ -7,6 +7,12 @@ def filter_by_currency(transactions: List[dict], currency: str) -> Iterator:
     return filter(lambda x: x["operationAmount"]["currency"]["code"] == currency, transactions)
 
 
+def filter_by_currency_for_csv_excel(transactions: List[dict], currency: str) -> Iterator:
+    """Функция принимает на вход список словарей, представляющих транзакции.
+    Возвращает транзакции отфильтрованные по заданной валюте для csv и excel файлов."""
+    return filter(lambda x: x["currency_code"] == currency, transactions)
+
+
 def transaction_descriptions(transactions: List[dict]) -> Generator:
     """Функция принимает на вход список словарей с транзакциями.
     Возвращает описание каждой операции."""
